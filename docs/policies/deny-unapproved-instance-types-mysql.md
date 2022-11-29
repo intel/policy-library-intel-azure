@@ -37,8 +37,9 @@ This Sentinel policy checks that the instances are configured with the recommend
                        MO_Standard_E20ds_v5, MO_Standard_E32ds_v5
                        MO_Standard_E48ds_v5, MO_Standard_E64ds_v5
           --------------------------------------------------------
-          The configured instance_class should an Intel Xeon 3rd
-          Generation Scalable processors (code-named Ice Lake)
+          The configured "sku_name" should be an Intel Xeon 3rd
+          Generation(code-named Ice Lake) or Intel Xeon 3rd Generation
+          (code-named Cascade Lake ) Scalable processors
           --------------------------------------------------------
 
         Value:
