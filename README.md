@@ -14,7 +14,7 @@ This library, provides prescriptive Terraform policies that can be used to estab
 
 ## Policies included
 
-- deny-unapproved-instance-types-mysql [docs](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/docs/policies/deny-unapproved-instance-types-mysql.md) | [code](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/policies/deny-unapproved-instance-types-mysql/deny-unapproved-instance-types-mysql.sentinel)
-- deny-unapproved-instance-types-postgresq [docs](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/docs/policies/deny-unapproved-instance-types-postgresql.md) [code](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/policies/deny-unapproved-instance-types-postgresql/deny-unapproved-instance-types-postgresql.sentinel)
+- deny-unapproved-instance-types-mysql ([docs](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/docs/policies/deny-unapproved-instance-types-mysql.md) | [code](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/policies/deny-unapproved-instance-types-mysql/deny-unapproved-instance-types-mysql.sentinel))
+- deny-unapproved-instance-types-postgresq ([docs](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/docs/policies/deny-unapproved-instance-types-postgresql.md) | [code](https://github.com/OTCShare2/policy-library-intel-azure/blob/main/policies/deny-unapproved-instance-types-postgresql/deny-unapproved-instance-types-postgresql.sentinel))
 
 ---
