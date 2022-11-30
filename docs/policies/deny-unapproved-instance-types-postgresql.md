@@ -6,7 +6,7 @@
 
 ## Description
 
-Database performance is one of the most important components for enterprise applications experience. Deploying the Azure PostgreSQL Flexible Database Servers on Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake) provides a seamless performance foundation.
+Database performance is one of the most important components for enterprise applications experience. Deploying the Azure PostgreSQL Flexible Database Servers on Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake) or Intel Xeon 3rd Generation (code-named Cascade Lake) Scalable processors provides a seamless performance foundation.
 
 This Sentinel policy checks that the instances are configured with the recommended instance types to deliver increased performance for your business criticial databases.
 
@@ -41,8 +41,9 @@ This Sentinel policy checks that the instances are configured with the recommend
                        GP_Standard_E20ds_v4, GP_Standard_E32ds_v4
                        GP_Standard_E48ds_v4, GP_Standard_E64ds_v4
           --------------------------------------------------------
-          The configured sku_name should use Intel Xeon 3rd Generation
-          Scalable processors (code-named Ice Lake)
+          The configured "sku_name" should be an Intel Xeon 3rd
+          Generation(code-named Ice Lake) or Intel Xeon 3rd Generation
+          (code-named Cascade Lake ) Scalable processors
           --------------------------------------------------------
 
         Value:

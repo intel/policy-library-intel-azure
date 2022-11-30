@@ -1,12 +1,21 @@
-import "tfplan-functions" as plan
+import "tfplan/v2" as tfplan
 
-allowed_instances = ["MO_Standard_E2ds_v5", "MO_Standard_E4ds_v5", "MO_Standard_E8ds_v5", "MO_Standard_E16ds_v5", "MO_Standard_E20ds_v5", "MO_Standard_E32ds_v5", "MO_Standard_E48ds_v5", "MO_Standard_E64ds_v5"]
-allInstances = plan.find_resources("azurerm_mysql_flexible_server")
+# Get all db_instances instances from all modules
+db_instances = filter tfplan.resource_changes as _, rc {
+	rc.mode is "managed" and
+		rc.type is "azurerm_mysql_flexible_server" and
+		(rc.change.actions contains "create" or
+			rc.change.actions is ["update"])
+}
 
-violatingInstances = plan.filter_attribute_not_in_list(allInstances,
-	"sku_name", allowed_instances, true)
+sku_list = ["MO_Standard_E2ds_v5", "MO_Standard_E4ds_v5", "MO_Standard_E8ds_v5", "MO_Standard_E16ds_v5", "MO_Standard_E20ds_v5", "MO_Standard_E32ds_v5", "MO_Standard_E48ds_v5", "MO_Standard_E64ds_v5"]
 
-violations = length(violatingInstances["messages"])
+# Rule to restrict sku types
+allowed_skus = rule {
+	all db_instances as _, instance {
+		instance.change.after.sku_name in sku_list
+	}
+}
 
 // --------------------------------------------------------
 //                     _       _       _
@@ -32,5 +41,5 @@ violations = length(violatingInstances["messages"])
 // The configured instance_class should an Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake)
 // --------------------------------------------------------
 main = rule {
-	violations is 0
+	(allowed_skus) else true
 }
