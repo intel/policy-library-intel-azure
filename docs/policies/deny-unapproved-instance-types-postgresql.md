@@ -41,8 +41,9 @@ This Sentinel policy checks that the instances are configured with the recommend
                        GP_Standard_E20ds_v4, GP_Standard_E32ds_v4
                        GP_Standard_E48ds_v4, GP_Standard_E64ds_v4
           --------------------------------------------------------
-          The configured sku_name should use Intel Xeon 3rd Generation
-          Scalable processors (code-named Ice Lake)
+          The configured "sku_name" should be an Intel Xeon 3rd
+          Generation(code-named Ice Lake) or Intel Xeon 3rd Generation
+          (code-named Cascade Lake ) Scalable processors
           --------------------------------------------------------
 
         Value:
