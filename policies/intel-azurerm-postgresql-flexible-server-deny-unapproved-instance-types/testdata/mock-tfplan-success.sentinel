@@ -1,0 +1,22 @@
+terraform_version = "1.3.5"
+
+resource_changes = {
+	"module.intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.azurerm_postgresql_flexible_server.appservice": {
+		"address": "intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.azurerm_postgresql_flexible_server.appservice",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"sku_name": "GP_Standard_E2ds_v4",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "azurerm_postgresql_flexible_server",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_postgresql_flexible_server",
+	},
+}

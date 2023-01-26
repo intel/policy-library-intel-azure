@@ -1,14 +1,24 @@
-policy "deny-unapproved-instance-types-mysql" {
-  source = "./policies/deny-unapproved-instance-types-mysql/deny-unapproved-instance-types-mysql.sentinel"
+policy "intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types/intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
 }
 
-policy "deny-unapproved-instance-types-postgresql" {
-  source = "./policies/deny-unapproved-instance-types-postgresql/deny-unapproved-instance-types-postgresql.sentinel"
+policy "intel-azurerm-mssql-server-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-mssql-server-deny-unapproved-instance-types/intel-azurerm-mssql-server-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
 }
 
-policy "deny-unapproved-instance-types-mssql" {
-  source = "./policies/deny-unapproved-instance-types-mssql/deny-unapproved-instance-types-mssql.sentinel"
+policy "intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types/intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
+policy "intel-azurerm-service-plan-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-service-plan-deny-unapproved-instance-types/intel-azurerm-service-plan-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
+policy "intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type" {
+  source = "./policies/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.sentinel"
   enforcement_level = "soft-mandatory"
 }

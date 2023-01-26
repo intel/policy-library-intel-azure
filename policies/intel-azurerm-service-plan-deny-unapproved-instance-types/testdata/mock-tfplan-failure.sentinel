@@ -1,0 +1,22 @@
+terraform_version = "1.3.5"
+
+resource_changes = {
+	"module.intel-azurerm-service-plan-deny-unapproved-instance-types.azurerm_service_plan.appservice": {
+		"address": "module.intel-azurerm-service-plan-deny-unapproved-instance-types.azurerm_service_plan.appservice",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"sku_name": "MOP_Standard_E4ds_v4",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "azurerm_service_plan",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_service_plan",
+	},
+}
