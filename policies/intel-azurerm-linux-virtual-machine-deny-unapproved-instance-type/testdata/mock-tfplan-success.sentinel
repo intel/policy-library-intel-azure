@@ -1,0 +1,22 @@
+terraform_version = "1.3.5"
+
+resource_changes = {
+	"module.intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.azurerm_linux_virtual_machine.appservice": {
+		"address": "module.intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.azurerm_linux_virtual_machine.appservice",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"virtual_machine_size": "Standard_L8s_v3",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "azurerm_linux_virtual_machine",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_linux_virtual_machine",
+	},
+}

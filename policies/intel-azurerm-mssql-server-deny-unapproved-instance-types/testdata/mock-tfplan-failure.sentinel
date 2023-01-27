@@ -1,0 +1,22 @@
+terraform_version = "1.3.5"
+
+resource_changes = {
+	"module.intel-azurerm-mssql-server-deny-unapproved-instance-types.azurerm_mssql_server.appservice": {
+		"address": "intel-azurerm-mssql-server-deny-unapproved-instance-types.azurerm_mssql_server.appservice",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"sku_name": "NotP1v3",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "mssql_server",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_mssql_server",
+	},
+}
