@@ -22,15 +22,15 @@ This Sentinel policy checks that the instances are configured with the recommend
                            | | '_ \| __/ _ \ |
                            | | | | | ||  __/ |
                            |_|_| |_|\__\___|_|
-       
+
         ========================================================================
         Name        : intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.sentinel
         Category    : Infrastructure (IaaS)
         Provider    : hashicorp/azurerm
         Resource    : azurerm_mysql_flexible_server
         Parameter   : sku_name
-        Check       : sku_name does not contain
-       
+        Check       : sku_name contains
+
         Compute Optimized:
                       MO_Standard_E2ds_v5, MO_Standard_E4ds_v5
                       MO_Standard_E8ds_v5, MO_Standard_E16ds_v5

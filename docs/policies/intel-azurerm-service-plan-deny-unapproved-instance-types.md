@@ -22,15 +22,15 @@ This Sentinel policy checks that the instances are configured with the recommend
                            | | '_ \| __/ _ \ |
                            | | | | | ||  __/ |
                            |_|_| |_|\__\___|_|
-       
+
         ========================================================================
         Name        : intel-azurerm-service-plan-deny-unapproved-instance-types.sentinel
         Category    : Infrastructure (IaaS)
         Provider    : hashicorp/azurerm
         Resource    : azurerm_service_plan
         Parameter   : sku_name
-        Check       : sku_name does not contain
-       
+        Check       : sku_name contains
+
                       P1v3, P2v3
                       P3v3, EP1
                       EP2, EP3

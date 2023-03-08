@@ -1,8 +1,8 @@
-## Ensure azurerm_linux_virtual_machine use only Intel optimized sizes (codename Ice Lake)
+## Ensure azurerm_ use only Intel optimized sizes (codename Ice Lake)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|
-| azurerm             | Infrastructure (IaaS)    |
+| azurerm             | Platform (PaaS)          |
 
 ## Description
 
@@ -24,12 +24,12 @@ This Sentinel policy checks that the instances are configured with the recommend
                            |_|_| |_|\__\___|_|
 
         ========================================================================
-        Name        : intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.sentinel
-        Category    : Infrastructure (IaaS)
+        Name        : intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel
+        Category    : Platform (PaaS)
         Provider    : hashicorp/azurerm
-        Resource    : azurerm_linux_virtual_machine
-        Parameter   : virtual_machine_size
-        Check       : virtual_machine_size contains
+        Resource    : azurerm_kubernetes_cluster
+        Parameter   : vm_size
+        Check       : vm_size contains
 
         Storage Optimized:
                       Standard_L8s_v3, Standard_L16s_v3
@@ -76,10 +76,10 @@ This Sentinel policy checks that the instances are configured with the recommend
         RESOURCE VIOLATIONS
         The configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)
         ========================================================================
-         name       : linux01
-         type       : azurerm_linux_virtual_machine
-         address    : module.azure-vm.azurerm_linux_virtual_machine.linux_vm
-         message    : notStandard_D2_v5 is not an allowed server type.
+         name       : kubernetes01
+         type       : azurerm_kubernetes_cluster
+         address    : module.aks.azurerm_kubernetes_cluster.main
+         message    : NOTStandard_L8s_v3 is not an allowed server type.
         ------------------------------------------------------------------------
          Resources out of compliance: 1
         ------------------------------------------------------------------------
