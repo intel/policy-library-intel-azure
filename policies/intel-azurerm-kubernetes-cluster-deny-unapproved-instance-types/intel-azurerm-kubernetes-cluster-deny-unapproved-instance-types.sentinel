@@ -137,7 +137,9 @@ all_resources = filter tfplan.resource_changes as _, rc {
 
 // Filter resources that violate a given condition
 violators = filter all_resources as _, r {
-	r.change.after.default_node_pool[0].vm_size not in allowed_server_types
+	all r.change.after.default_node_pool as node_pools {
+		node_pools.vm_size not in allowed_server_types
+	}
 }
 
 // Build a summary report
@@ -149,7 +151,7 @@ summaryreport = {
 			"name":    violation.name,
 			"address": violation.address,
 			"type":    violation.type,
-			"message": violation.change.after.default_node_pool[0].vm_size + " is not an allowed server type.",
+			"message": violation.name + " uses a node type that is not an allowed server type.",
 		}
 	},
 }
