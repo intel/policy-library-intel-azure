@@ -45,7 +45,7 @@ header = func(input, output) {
 		output + "\tProvider    :" + output + " " + "hashicorp/azurerm\n",
 		output + "\tResource    :" + output + " " + "azurerm_mysql_flexible_server\n",
 		output + "\tParameter   :" + output + " " + "sku_name\n",
-		output + "\tCheck       :" + output + " " + "sku_name does not contain\n",
+		output + "\tCheck       :" + output + " " + "sku_name contains\n",
 		output + "\t\n",
 		output + "\tCompute Optimized:\n",
 		output + "\t              MO_Standard_E2ds_v5, MO_Standard_E4ds_v5\n",

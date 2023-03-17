@@ -22,15 +22,15 @@ This Sentinel policy checks that the instances are configured with the recommend
                            | | '_ \| __/ _ \ |
                            | | | | | ||  __/ |
                            |_|_| |_|\__\___|_|
-       
+
         ========================================================================
         Name        : intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.sentinel
         Category    : Infrastructure (IaaS)
         Provider    : hashicorp/azurerm
         Resource    : azurerm_postgresql_flexible_server
         Parameter   : sku_name
-        Check       : sku_name does not contain
-       
+        Check       : sku_name contains
+
         General Purpose:
                       GP_Standard_E2ds_v4, GP_Standard_E4ds_v4
                       GP_Standard_E8ds_v4, GP_Standard_E16ds_v4

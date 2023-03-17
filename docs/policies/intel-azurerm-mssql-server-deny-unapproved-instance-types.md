@@ -22,15 +22,15 @@ This Sentinel policy checks that the instances are configured with the recommend
                            | | '_ \| __/ _ \ |
                            | | | | | ||  __/ |
                            |_|_| |_|\__\___|_|
-       
+
         ========================================================================
         Name        : intel-azurerm-mssql-server-deny-unapproved-instance-types.sentinel
         Category    : Infrastructure (IaaS)
         Provider    : hashicorp/azurerm
         Resource    : azurerm_mssql_server
         Parameter   : sku_name
-        Check       : sku_name does not contain
-       
+        Check       : sku_name contains
+
         Compute Optimized:
                       GP_Fsv2_8, GP_Fsv2_10
                       GP_Fsv2_12, GP_Fsv2_14
