@@ -12,7 +12,7 @@ This library, provides prescriptive Terraform and Sentinel policies that can be 
 
 ---
 
-## Policies included
+## Policies includeded
 
 - intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type ([docs](https://github.com/intel/policy-library-intel-azure/blob/main/docs/policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type.md) | [code](https://github.com/intel/policy-library-intel-azure/blob/main/policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type.sentinel))
 - intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type ([docs](https://github.com/intel/policy-library-intel-azure/blob/main/docs/policies/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.md) | [code](https://github.com/intel/policy-library-intel-azure/blob/main/policies/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.sentinel))
