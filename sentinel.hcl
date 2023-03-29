@@ -1,5 +1,5 @@
-policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type" {
-  source = "./policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-type.sentinel"
+policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
 }
 
