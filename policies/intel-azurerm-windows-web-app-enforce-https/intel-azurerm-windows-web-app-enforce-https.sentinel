@@ -1,0 +1,115 @@
+import "tfplan/v2" as tfplan
+
+param valid_actions default [
+	["no-op"],
+	["create"],
+	["update"],
+]
+
+format = {
+	"reset": "\033[0m",
+	"info":  "\033[32m",
+	"warn":  "\033[33m",
+	"error": "\033[31m",
+}
+
+summary = func(input, level) {
+	result = false
+	if input.violations is empty {
+		return true
+	} else {
+		log(input, format[level])
+	}
+	return result
+}
+
+log = func(input, output) {
+	header(input, output)
+	violations(input, output)
+	return null
+}
+
+header = func(input, output) {
+	print(
+		output + "\t========================================================================\n",
+		output + "\t                    _       _       _ \n",
+		output + "\t                   (_)     | |     | |\n",
+		output + "\t                    _ _ __ | |_ ___| |\n",
+		output + "\t                   | | '_ \\| __/ _ \\ |\n",
+		output + "\t                   | | | | | ||  __/ |\n",
+		output + "\t                   |_|_| |_|\\__\\___|_|\n",
+		output + "\t\n",
+		output + "\t========================================================================\n",
+		output + "\tName        :" + output + " " + "intel-azurerm-windows-web-app-enforce-https.sentinel\n",
+		output + "\tCategory    :" + output + " " + "Platform (PaaS)\n",
+		output + "\tProvider    :" + output + " " + "hashicorp/azurerm\n",
+		output + "\tResource    :" + output + " " + "azurerm_windows_web_app\n",
+		output + "\tParameter   :" + output + " " + "https_only\n",
+		output + "\tCheck       :" + output + " " + "https is enabled\n",
+		output + "\t\n",
+	)
+	return null
+}
+
+violations = func(input, output) {
+	print(
+		output + "\t========================================================================\n",
+		output + "\tRESOURCE VIOLATIONS\n" + format.reset,
+		output + "\tThe configured windows web app instances should use only https\n",
+		output + "\t========================================================================\t",
+	)
+	for input.violations as violation {
+		print(
+			"\t",
+			output + "name       :" + output + " " + violation.name + "\n\t",
+			output + "type       :" + output + " " + violation.type + "\n\t",
+			output + "address    :" + output + " " + violation.address + "\n\t",
+			output + "message    :" + output + " " + violation.message + "\t\n",
+			output + "\t------------------------------------------------------------------------\t",
+		)
+	}
+	if (input.violations is not empty) {
+		print(
+			output + "\t",
+			output + "Resources out of compliance: " + string(length(input.violations)) + "\n" + format.reset,
+			output + "\t------------------------------------------------------------------------\t",
+		)
+	}
+	return null
+}
+
+doc = {
+	"id":       "windows_web_app_01",
+	"resource": "azurerm_windows_web_app",
+	"name":     "Https must be enabled",
+}
+
+// Filter resources by type
+all_resources = filter tfplan.resource_changes as _, rc {
+	rc.type is doc.resource and
+		rc.mode is "managed" and
+		rc.change.actions in valid_actions
+}
+
+// Filter resources that violate a given condition
+violators = filter all_resources as _, r {
+	r.change.after.https_only is false
+}
+
+// Build a summary report
+summaryreport = {
+	"id":   doc.id,
+	"name": doc.name,
+	"violations": map violators as _, violation {
+		{
+			"name":    violation.name,
+			"address": violation.address,
+			"type":    violation.type,
+			"message": violation.name + " must have https enabled.",
+		}
+	},
+}
+
+main = rule {
+	summary(summaryreport, "warn")
+}

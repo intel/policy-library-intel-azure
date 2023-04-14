@@ -1,4 +1,4 @@
-## Ensure azurerm_ use only Intel optimized sizes (codename Ice Lake)
+## Ensure azurerm_kubernetes_cluster use only Intel optimized sizes (codename Ice Lake)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|
