@@ -1,5 +1,6 @@
 #Generate mock data
 import "tfplan/v2" as tfplan
+import "approved"
 
 param valid_actions default [
 	["no-op"],
@@ -7,120 +8,75 @@ param valid_actions default [
 	["update"],
 ]
 
-format = {
-	"reset": "\033[0m",
-	"info":  "\033[32m",
-	"warn":  "\033[33m",
-	"error": "\033[31m",
-}
-
-summary = func(input, level) {
+summary = func(input) {
 	result = false
 	if input.violations is empty {
 		return true
 	} else {
-		log(input, format[level])
+		log(input)
 	}
 	return result
 }
 
-log = func(input, output) {
-	header(input, output)
-	violations(input, output)
+log = func(input) {
+	header(input)
+	violations(input)
 	return null
 }
 
-header = func(input, output) {
+header = func(input) {
 	print(
-		output + "\t========================================================================\n",
-		output + "\t                    _       _       _ \n",
-		output + "\t                   (_)     | |     | |\n",
-		output + "\t                    _ _ __ | |_ ___| |\n",
-		output + "\t                   | | '_ \\| __/ _ \\ |\n",
-		output + "\t                   | | | | | ||  __/ |\n",
-		output + "\t                   |_|_| |_|\\__\\___|_|\n",
-		output + "\t\n",
-		output + "\t========================================================================\n",
-		output + "\tName        :" + output + " " + "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel\n",
-		output + "\tCategory    :" + output + " " + "Platform (PaaS)\n",
-		output + "\tProvider    :" + output + " " + "hashicorp/azurerm\n",
-		output + "\tResource    :" + output + " " + "azurerm_kubernetes_cluster\n",
-		output + "\tParameter   :" + output + " " + "vm_size\n",
-		output + "\tCheck       :" + output + " " + "vm_size contains\n",
-		output + "\t\n",
-		output + "\tStorage Optimized:\n",
-		output + "\t              Standard_L8s_v3, Standard_L16s_v3\n",
-		output + "\t              Standard_L32s_v3, Standard_L48s_v3\n",
-		output + "\t              Standard_L64s_v3, Standard_L80s_v3\n",
-		output + "\tGeneral Purpose:\n",
-		output + "\t              Standard_D2_v5, Standard_D4_v5\n",
-		output + "\t              Standard_D8_v5, Standard_D16_v5\n",
-		output + "\t              Standard_D32_v5, Standard_D48_v5\n",
-		output + "\t              Standard_D64_v5, Standard_D96_v5\n",
-		output + "\t              Standard_D2s_v5, Standard_D4s_v5\n",
-		output + "\t              Standard_D8s_v5, Standard_D16s_v5\n",
-		output + "\t              Standard_D32s_v5, Standard_D48s_v5\n",
-		output + "\t              Standard_D64s_v5, Standard_D96s_v5\n",
-		output + "\t              Standard_D2d_v5, Standard_D4d_v5\n",
-		output + "\t              Standard_D8d_v5, Standard_D16d_v5\n",
-		output + "\t              Standard_D32d_v5, Standard_D48d_v5\n",
-		output + "\t              Standard_D64d_v5, Standard_D96d_v5\n",
-		output + "\t              Standard_D2ds_v5, Standard_D4ds_v5\n",
-		output + "\t              Standard_D8ds_v5, Standard_D16ds_v5\n",
-		output + "\t              Standard_D32ds_v5, Standard_D48ds_v5\n",
-		output + "\t              Standard_D64ds_v5, Standard_D96ds_v5\n",
-		output + "\t              Standard_DC1s_v3, Standard_DC2s_v3\n",
-		output + "\t              Standard_DC4s_v3, Standard_DC8s_v3\n",
-		output + "\t              Standard_DC16s_v3, Standard_DC24s_v3\n",
-		output + "\t              Standard_DC32s_v3, Standard_DC48s_v3\n",
-		output + "\t              Standard_DC1ds_v3, Standard_DC2ds_v3\n",
-		output + "\t              Standard_DC4ds_v3, Standard_DC8ds_v3\n",
-		output + "\t              Standard_DC16ds_v3, Standard_DC24ds_v3\n",
-		output + "\t              Standard_DC32ds_v3, Standard_DC48ds_v3\n",
-		output + "\tMemory Optimized:\n",
-		output + "\t              Standard_E2_v5, Standard_E4_v5\n",
-		output + "\t              Standard_E8_v5, Standard_E16_v5\n",
-		output + "\t              Standard_E20_v5, Standard_E32_v5\n",
-		output + "\t              Standard_E48_v5, Standard_E64_v5\n",
-		output + "\t              Standard_E96_v5, Standard_E104i_v5\n",
-		output + "\t              Standard_E2s_v5, Standard_E4s_v5\n",
-		output + "\t              Standard_E8s_v5, Standard_E16s_v5\n",
-		output + "\t              Standard_E20s_v5, Standard_E32s_v5\n",
-		output + "\t              Standard_E48s_v5, Standard_E64s_v5\n",
-		output + "\t              Standard_E96s_v5, Standard_E104is_v5\n",
+		"\t========================================================================\n",
+		"\t                    _       _       _ \n",
+		"\t                   (_)     | |     | |\n",
+		"\t                    _ _ __ | |_ ___| |\n",
+		"\t                   | | '_ \\| __/ _ \\ |\n",
+		"\t                   | | | | | ||  __/ |\n",
+		"\t                   |_|_| |_|\\__\\___|_|\n",
+		"\t\n",
+		"\t========================================================================\n",
+		"\tName        :" + "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel\n",
+		"\tCategory    :" + "Platform (PaaS)\n",
+		"\tProvider    :" + "hashicorp/azurerm\n",
+		"\tResource    :" + "azurerm_kubernetes_cluster\n",
+		"\tParameter   :" + "vm_size\n",
+		"\tCheck       :" + "vm_size contains\n",
+		"\t\n",
+		"\tFor a list of allowed instance types see:\n",
+		"\thttps://github.com/intel/terraform-intel-azure-aks/blob/main/POLICIES.md\n",
 	)
 	return null
 }
 
-violations = func(input, output) {
+violations = func(input) {
 	print(
-		output + "\t========================================================================\n",
-		output + "\tRESOURCE VIOLATIONS\n" + format.reset,
-		output + "\tThe configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)\n",
-		output + "\t========================================================================\t",
+		"\t========================================================================\n",
+		"\tRESOURCE VIOLATIONS\n",
+		"\tThe configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)\n",
+		"\t========================================================================\t",
 	)
 	for input.violations as violation {
 		print(
 			"\t",
-			output + "name       :" + output + " " + violation.name + "\n\t",
-			output + "type       :" + output + " " + violation.type + "\n\t",
-			output + "address    :" + output + " " + violation.address + "\n\t",
-			output + "message    :" + output + " " + violation.message + "\t\n",
-			output + "\t------------------------------------------------------------------------\t",
+			"name       :" + violation.name + "\n\t",
+			"type       :" + violation.type + "\n\t",
+			"address    :" + violation.address + "\n\t",
+			"message    :" + violation.message + "\t\n",
+			"\t------------------------------------------------------------------------\t",
 		)
 	}
 	if (input.violations is not empty) {
 		print(
-			output + "\t",
-			output + "Resources out of compliance: " + string(length(input.violations)) + "\n" + format.reset,
-			output + "\t------------------------------------------------------------------------\t",
+			"\t",
+			"Resources out of compliance: " + string(length(input.violations)) + "\n",
+			"\t------------------------------------------------------------------------\t",
 		)
 	}
 	return null
 }
 
 // Allowed server resource types
-allowed_server_types = ["Standard_L8s_v3", "Standard_L16s_v3", "Standard_L32s_v3", "Standard_L48s_v3", "Standard_L64s_v3", "Standard_L80s_v3", "Standard_D2_v5", "Standard_D4_v5", "Standard_D8_v5", "Standard_D16_v5", "Standard_D32_v5", "Standard_D48_v5", "Standard_D64_v5", "Standard_D96_v5", "Standard_D2s_v5", "Standard_D4s_v5", "Standard_D8s_v5", "Standard_D16s_v5", "Standard_D32s_v5", "Standard_D48s_v5", "Standard_D64s_v5", "Standard_D96s_v5", "Standard_D2d_v5", "Standard_D4d_v5", "Standard_D8d_v5", "Standard_D16d_v5", "Standard_D32d_v5", "Standard_D48d_v5", "Standard_D64d_v5", "Standard_D96d_v5", "Standard_D2ds_v5", "Standard_D4ds_v5", "Standard_D8ds_v5", "Standard_D16ds_v5", "Standard_D32ds_v5", "Standard_D48ds_v5", "Standard_D64ds_v5", "Standard_D96ds_v5", "Standard_DC1s_v3", "Standard_DC2s_v3", "Standard_DC4s_v3", "Standard_DC8s_v3", "Standard_DC16s_v3", "Standard_DC24s_v3", "Standard_DC32s_v3", "Standard_DC48s_v3", "Standard_DC1ds_v3", "Standard_DC2ds_v3", "Standard_DC4ds_v3", "Standard_DC8ds_v3", "Standard_DC16ds_v3", "Standard_DC24ds_v3", "Standard_DC32ds_v3", "Standard_DC48ds_v3", "Standard_E2_v5", "Standard_E4_v5", "Standard_E8_v5", "Standard_E16_v5", "Standard_E20_v5", "Standard_E32_v5", "Standard_E48_v5", "Standard_E64_v5", "Standard_E96_v5", "Standard_E104i_v5", "Standard_E2s_v5", "Standard_E4s_v5", "Standard_E8s_v5", "Standard_E16s_v5", "Standard_E20s_v5", "Standard_E32s_v5", "Standard_E48s_v5", "Standard_E64s_v5", "Standard_E96s_v5", "Standard_E104is_v5"]
+allowed_server_types = approved.azurek8
 
 doc = {
 	"id":       "kubernetes01",
@@ -157,5 +113,5 @@ summaryreport = {
 }
 
 main = rule {
-	summary(summaryreport, "warn")
+	summary(summaryreport)
 }

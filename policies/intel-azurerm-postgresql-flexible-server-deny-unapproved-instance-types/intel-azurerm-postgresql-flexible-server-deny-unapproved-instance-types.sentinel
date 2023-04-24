@@ -1,4 +1,5 @@
 import "tfplan/v2" as tfplan
+import "approved"
 
 param valid_actions default [
 	["no-op"],
@@ -6,90 +7,75 @@ param valid_actions default [
 	["update"],
 ]
 
-format = {
-	"reset": "\033[0m",
-	"info":  "\033[32m",
-	"warn":  "\033[33m",
-	"error": "\033[31m",
-}
-
-summary = func(input, level) {
+summary = func(input) {
 	result = false
 	if input.violations is empty {
 		return true
 	} else {
-		log(input, format[level])
+		log(input)
 	}
 	return result
 }
 
-log = func(input, output) {
-	header(input, output)
-	violations(input, output)
+log = func(input) {
+	header(input)
+	violations(input)
 	return null
 }
 
-header = func(input, output) {
+header = func(input) {
 	print(
-		output + "\t========================================================================\n",
-		output + "\t                    _       _       _ \n",
-		output + "\t                   (_)     | |     | |\n",
-		output + "\t                    _ _ __ | |_ ___| |\n",
-		output + "\t                   | | '_ \\| __/ _ \\ |\n",
-		output + "\t                   | | | | | ||  __/ |\n",
-		output + "\t                   |_|_| |_|\\__\\___|_|\n",
-		output + "\t\n",
-		output + "\t========================================================================\n",
-		output + "\tName        :" + output + " " + "intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.sentinel\n",
-		output + "\tCategory    :" + output + " " + "Infrastructure (IaaS)\n",
-		output + "\tProvider    :" + output + " " + "hashicorp/azurerm\n",
-		output + "\tResource    :" + output + " " + "azurerm_postgresql_flexible_server\n",
-		output + "\tParameter   :" + output + " " + "sku_name\n",
-		output + "\tCheck       :" + output + " " + "sku_name contains\n",
-		output + "\t\n",
-		output + "\tGeneral Purpose:\n",
-		output + "\t              GP_Standard_E2ds_v4, GP_Standard_E4ds_v4\n",
-		output + "\t              GP_Standard_E8ds_v4, GP_Standard_E16ds_v4\n",
-		output + "\t              GP_Standard_E20ds_v4, GP_Standard_E32ds_v4\n",
-		output + "\t              GP_Standard_E48ds_v4, GP_Standard_E64ds_v4\n",
-		output + "\tMemory Optimized:\n",
-		output + "\t              MO_Standard_E2ds_v4, MO_Standard_E4ds_v4\n",
-		output + "\t              MO_Standard_E8ds_v4, MO_Standard_E16ds_v4\n",
-		output + "\t              MO_Standard_E20ds_v4, MO_Standard_E32ds_v4\n",
-		output + "\t              MO_Standard_E48ds_v4, MO_Standard_E64ds_v4\n",
+		"\t========================================================================\n",
+		"\t                    _       _       _ \n",
+		"\t                   (_)     | |     | |\n",
+		"\t                    _ _ __ | |_ ___| |\n",
+		"\t                   | | '_ \\| __/ _ \\ |\n",
+		"\t                   | | | | | ||  __/ |\n",
+		"\t                   |_|_| |_|\\__\\___|_|\n",
+		"\t\n",
+		"\t========================================================================\n",
+		"\tName        :" + "intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.sentinel\n",
+		"\tCategory    :" + "Infrastructure (IaaS)\n",
+		"\tProvider    :" + "hashicorp/azurerm\n",
+		"\tResource    :" + "azurerm_postgresql_flexible_server\n",
+		"\tParameter   :" + "sku_name\n",
+		"\tCheck       :" + "sku_name contains\n",
+		"\t\n",
+		"\tFor a list of allowed instance types see:\n",
+		"\thttps://github.com/intel/terraform-intel-azure-postgresql-flexible-server/blob/main/policies.md\n",
 	)
 	return null
 }
 
-violations = func(input, output) {
+violations = func(input) {
 	print(
-		output + "\t========================================================================\n",
-		output + "\tRESOURCE VIOLATIONS\n" + format.reset,
-		output + "\tThe configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)\n",
-		output + "\t========================================================================\t",
+		"\t========================================================================\n",
+		"\tRESOURCE VIOLATIONS\n",
+		"\tThe configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)\n",
+		"\t========================================================================\t",
 	)
 	for input.violations as violation {
 		print(
 			"\t",
-			output + "name       :" + output + " " + violation.name + "\n\t",
-			output + "type       :" + output + " " + violation.type + "\n\t",
-			output + "address    :" + output + " " + violation.address + "\n\t",
-			output + "message    :" + output + " " + violation.message + "\t\n",
-			output + "\t------------------------------------------------------------------------\t",
+			"name       :" + violation.name + "\n\t",
+			"type       :" + violation.type + "\n\t",
+			"address    :" + violation.address + "\n\t",
+			"message    :" + violation.message + "\t\n",
+			"\t------------------------------------------------------------------------\t",
 		)
 	}
 	if (input.violations is not empty) {
 		print(
-			output + "\t",
-			output + "Resources out of compliance: " + string(length(input.violations)) + "\n" + format.reset,
-			output + "\t------------------------------------------------------------------------\t",
+			"\t",
+			"Resources out of compliance: " + string(length(input.violations)) + "\n",
+			"\t------------------------------------------------------------------------\t",
 		)
 	}
 	return null
 }
 
 // Allowed server resource types
-allowed_server_types = ["MO_Standard_E2ds_v4", "MO_Standard_E4ds_v4", "MO_Standard_E8ds_v4", "MO_Standard_E16ds_v4", "MO_Standard_E20ds_v4", "MO_Standard_E32ds_v4", "MO_Standard_E48ds_v4", "MO_Standard_E64ds_v4", "GP_Standard_E2ds_v4", "GP_Standard_E4ds_v4", "GP_Standard_E8ds_v4", "GP_Standard_E16ds_v4", "GP_Standard_E20ds_v4", "GP_Standard_E32ds_v4", "GP_Standard_E48ds_v4", "GP_Standard_E64ds_v4"]
+allowed_server_types = approved.azurepostgresql
 
 doc = {
 	"id":       "postgresql01",
@@ -124,5 +110,5 @@ summaryreport = {
 }
 
 main = rule {
-	summary(summaryreport, "warn")
+	summary(summaryreport)
 }

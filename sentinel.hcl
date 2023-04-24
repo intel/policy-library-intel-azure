@@ -1,3 +1,8 @@
+import "static" "approved" {
+  source = "./approved.json"
+  format = "json"
+}
+
 policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
