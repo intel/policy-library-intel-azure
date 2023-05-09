@@ -1,4 +1,5 @@
 import "tfplan/v2" as tfplan
+import "policy_summary"
 
 param valid_actions default [
 	["no-op"],
@@ -6,77 +7,17 @@ param valid_actions default [
 	["update"],
 ]
 
-summary = func(input) {
-	result = false
-	if input.violations is empty {
-		return true
-	} else {
-		log(input)
-	}
-	return result
-}
-
-log = func(input) {
-	header(input)
-	violations(input)
-	return null
-}
-
-header = func(input) {
-	print(
-		"\t========================================================================\n",
-		"\t                    _       _       _ \n",
-		"\t                   (_)     | |     | |\n",
-		"\t                    _ _ __ | |_ ___| |\n",
-		"\t                   | | '_ \\| __/ _ \\ |\n",
-		"\t                   | | | | | ||  __/ |\n",
-		"\t                   |_|_| |_|\\__\\___|_|\n",
-		"\t\n",
-		"\t========================================================================\n",
-		"\tName        :" + "intel-azurerm-windows-web-app-enforce-minimum-tls.sentinel\n",
-		"\tCategory    :" + "Platform (PaaS)\n",
-		"\tProvider    :" + "hashicorp/azurerm\n",
-		"\tResource    :" + "azurerm_windows_web_app\n",
-		"\tParameter   :" + "minimum_tls_version\n",
-		"\tCheck       :" + "ensure minimum TLS version\n",
-		"\t\n",
-	)
-	return null
-}
-
-violations = func(input) {
-	print(
-		"\t========================================================================\n",
-		"\tRESOURCE VIOLATIONS\n",
-		"\tThe configured windows web app instances should use a minimum TLS version of 1.2\n",
-		"\t========================================================================\t",
-	)
-	for input.violations as violation {
-		print(
-			"\t",
-			"name       :" + violation.name + "\n\t",
-			"type       :" + violation.type + "\n\t",
-			"address    :" + violation.address + "\n\t",
-			"message    :" + violation.message + "\t\n",
-			"\t------------------------------------------------------------------------\t",
-		)
-	}
-	if (input.violations is not empty) {
-		print(
-			"\t",
-			"Resources out of compliance: " + string(length(input.violations)) + "\n",
-			"\t------------------------------------------------------------------------\t",
-		)
-	}
-	return null
-}
-
-allowed_versions = "1.2"
-
 doc = {
-	"id":       "windows_web_app_01",
-	"resource": "azurerm_windows_web_app",
-	"name":     "Minimum TLS version must be set",
+	"allowed":   "1.2",
+	"category":  "Platform (PaaS)",
+	"error":     " must have a minimum set TLS version of 1.2",
+	"file_name": "intel-azurerm-windows-web-app-enforce-minimum-tls.sentinel",
+	"name":      "windows_web_app_01",
+	"md_url":    "https://github.com/intel/terraform-intel-azure-app-service-windows/blob/main/POLICIES.md",
+	"parameter": "minimum_tls_version",
+	"provider":  "hashicorp/azurerm",
+	"resource":  "azurerm_windows_web_app",
+	"violation": "The configured windows web app instances should use a minimum TLS version of 1.2",
 }
 
 // Filter resources by type
@@ -89,24 +30,23 @@ all_resources = filter tfplan.resource_changes as _, rc {
 // Filter resources that violate a given condition
 violators = filter all_resources as _, r {
 	all r.change.after.site_config as _, site_config {
-		site_config.minimum_tls_version not in allowed_versions
+		site_config.minimum_tls_version not in doc.allowed
 	}
 }
 
 // Build a summary report
 summaryreport = {
-	"id":   doc.id,
 	"name": doc.name,
 	"violations": map violators as _, violation {
 		{
 			"name":    violation.name,
 			"address": violation.address,
 			"type":    violation.type,
-			"message": violation.name + " must have a minimum set TLS version of 1.2",
+			"message": violation.name + doc.error,
 		}
 	},
 }
 
 main = rule {
-	summary(summaryreport)
+	policy_summary.summary(summaryreport, doc)
 }
