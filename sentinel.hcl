@@ -48,7 +48,7 @@ policy "intel-azurerm-databricks-cluster-deny-unapproved-runtime-engines" {
 }
 
 policy "intel-azurerm-databricks-cluster-enforce-spark-conf" {
-  source = "./policies/intel-azurerm-databricks-cluster-enforce-spark-conf/ntel-azurerm-databricks-cluster-enforce-spark-conf.sentinel"
+  source = "./policies/intel-azurerm-databricks-cluster-enforce-spark-conf/intel-azurerm-databricks-cluster-enforce-spark-conf.sentinel"
   enforcement_level = "soft-mandatory"
 }
 
