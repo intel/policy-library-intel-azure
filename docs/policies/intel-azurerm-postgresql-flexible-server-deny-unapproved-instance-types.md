@@ -24,32 +24,24 @@ This Sentinel policy checks that the instances are configured with the recommend
                            |_|_| |_|\__\___|_|
 
         ========================================================================
-        Name        : intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.sentinel
-        Category    : Infrastructure (IaaS)
-        Provider    : hashicorp/azurerm
-        Resource    : azurerm_postgresql_flexible_server
-        Parameter   : sku_name
-        Check       : sku_name contains
+        Name        :intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.sentinel
+        Category    :Infrastructure (IaaS)
+        Provider    :hashicorp/azurerm
+        Resource    :azurerm_postgresql_flexible_server
+        Parameter   :sku_name
+        Check       :sku_name contains
 
-        General Purpose:
-                      GP_Standard_E2ds_v4, GP_Standard_E4ds_v4
-                      GP_Standard_E8ds_v4, GP_Standard_E16ds_v4
-                      GP_Standard_E20ds_v4, GP_Standard_E32ds_v4
-                      GP_Standard_E48ds_v4, GP_Standard_E64ds_v4
-        Memory Optimized:
-                      MO_Standard_E2ds_v4, MO_Standard_E4ds_v4
-                      MO_Standard_E8ds_v4, MO_Standard_E16ds_v4
-                      MO_Standard_E20ds_v4, MO_Standard_E32ds_v4
-                      MO_Standard_E48ds_v4, MO_Standard_E64ds_v4
+        For a list of allowed instance types see:
+        https://github.com/intel/terraform-intel-azure-postgresql-flexible-server/blob/main/policies.md
 
         ========================================================================
         RESOURCE VIOLATIONS
         The configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)
         ========================================================================
-         name       : azurerm_postgresql_flexible_server
-         type       : azurerm_postgresql_flexible_server
-         address    : intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.azurerm_postgresql_flexible_server.appservice
-         message    : NotGP_Standard_E2ds_v4 is not an allowed server type.
+         name       :azurerm_postgresql_flexible_server
+         type       :azurerm_postgresql_flexible_server
+         address    :intel-azurerm-postgresql-flexible-server-deny-unapproved-instance-types.azurerm_postgresql_flexible_server.appservice
+         message    :NotGP_Standard_E2ds_v4 is not an allowed server type.
         ------------------------------------------------------------------------
          Resources out of compliance: 1
         ------------------------------------------------------------------------

@@ -1,4 +1,5 @@
 import "tfplan/v2" as tfplan
+import "policy_summary"
 
 param valid_actions default [
 	["no-op"],
@@ -6,82 +7,17 @@ param valid_actions default [
 	["update"],
 ]
 
-format = {
-	"reset": "\033[0m",
-	"info":  "\033[32m",
-	"warn":  "\033[33m",
-	"error": "\033[31m",
-}
-
-summary = func(input, level) {
-	result = false
-	if input.violations is empty {
-		return true
-	} else {
-		log(input, format[level])
-	}
-	return result
-}
-
-log = func(input, output) {
-	header(input, output)
-	violations(input, output)
-	return null
-}
-
-header = func(input, output) {
-	print(
-		output + "\t========================================================================\n",
-		output + "\t                    _       _       _ \n",
-		output + "\t                   (_)     | |     | |\n",
-		output + "\t                    _ _ __ | |_ ___| |\n",
-		output + "\t                   | | '_ \\| __/ _ \\ |\n",
-		output + "\t                   | | | | | ||  __/ |\n",
-		output + "\t                   |_|_| |_|\\__\\___|_|\n",
-		output + "\t\n",
-		output + "\t========================================================================\n",
-		output + "\tName        :" + output + " " + "intel-azurerm-windows-web-app-enforce-http2.sentinel\n",
-		output + "\tCategory    :" + output + " " + "Platform (PaaS)\n",
-		output + "\tProvider    :" + output + " " + "hashicorp/azurerm\n",
-		output + "\tResource    :" + output + " " + "azurerm_windows_web_app\n",
-		output + "\tParameter   :" + output + " " + "http2_enabled\n",
-		output + "\tCheck       :" + output + " " + "http2 is enabled\n",
-		output + "\t\n",
-	)
-	return null
-}
-
-violations = func(input, output) {
-	print(
-		output + "\t========================================================================\n",
-		output + "\tRESOURCE VIOLATIONS\n" + format.reset,
-		output + "\tThe configured windows web app instances should use http2\n",
-		output + "\t========================================================================\t",
-	)
-	for input.violations as violation {
-		print(
-			"\t",
-			output + "name       :" + output + " " + violation.name + "\n\t",
-			output + "type       :" + output + " " + violation.type + "\n\t",
-			output + "address    :" + output + " " + violation.address + "\n\t",
-			output + "message    :" + output + " " + violation.message + "\t\n",
-			output + "\t------------------------------------------------------------------------\t",
-		)
-	}
-	if (input.violations is not empty) {
-		print(
-			output + "\t",
-			output + "Resources out of compliance: " + string(length(input.violations)) + "\n" + format.reset,
-			output + "\t------------------------------------------------------------------------\t",
-		)
-	}
-	return null
-}
-
 doc = {
-	"id":       "windows_web_app_01",
-	"resource": "azurerm_windows_web_app",
-	"name":     "Http2 must be enabled",
+	"allowed":   null,
+	"category":  "Platform (PaaS)",
+	"error":     " must have http2 enabled.",
+	"file_name": "intel-azurerm-windows-web-app-enforce-http2.sentinel",
+	"name":      "windows_web_app_01",
+	"md_url":    "https://github.com/intel/terraform-intel-azure-app-service-windows/blob/main/POLICIES.md",
+	"parameter": "http2_enabled",
+	"provider":  "hashicorp/azurerm",
+	"resource":  "azurerm_windows_web_app",
+	"violation": "The configured windows web app instances should use only http2",
 }
 
 // Filter resources by type
@@ -100,18 +36,17 @@ violators = filter all_resources as _, r {
 
 // Build a summary report
 summaryreport = {
-	"id":   doc.id,
 	"name": doc.name,
 	"violations": map violators as _, violation {
 		{
 			"name":    violation.name,
 			"address": violation.address,
 			"type":    violation.type,
-			"message": violation.name + " must have http2 enabled.",
+			"message": violation.name + doc.error,
 		}
 	},
 }
 
 main = rule {
-	summary(summaryreport, "warn")
+	policy_summary.summary(summaryreport, doc)
 }

@@ -24,25 +24,24 @@ This Sentinel policy checks that the instances are configured with the recommend
                            |_|_| |_|\__\___|_|
 
         ========================================================================
-        Name        : intel-azurerm-service-plan-deny-unapproved-instance-types.sentinel
-        Category    : Infrastructure (IaaS)
-        Provider    : hashicorp/azurerm
-        Resource    : azurerm_service_plan
-        Parameter   : sku_name
-        Check       : sku_name contains
+        Name        :intel-azurerm-service-plan-deny-unapproved-instance-types.sentinel
+        Category    :Infrastructure (IaaS)
+        Provider    :hashicorp/azurerm
+        Resource    :azurerm_service_plan
+        Parameter   :sku_name
+        Check       :sku_name contains
 
-                      P1v3, P2v3
-                      P3v3, EP1
-                      EP2, EP3
+        For a list of allowed instance types see:
+        https://github.com/intel/terraform-intel-azure-app-service-plan/blob/main/policies.md
 
         ========================================================================
         RESOURCE VIOLATIONS
         The configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)
         ========================================================================
-         name       : azurerm_service_plan
-         type       : azurerm_service_plan
-         address    : module.intel-azurerm-service-plan-deny-unapproved-instance-types.azurerm_service_plan.appservice
-         message    : MOP_Standard_E4ds_v4 is not an allowed server type.
+         name       :azurerm_service_plan
+         type       :azurerm_service_plan
+         address    :module.intel-azurerm-service-plan-deny-unapproved-instance-types.azurerm_service_plan.appservice
+         message    :MOP_Standard_E4ds_v4 is not an allowed server type.
         ------------------------------------------------------------------------
          Resources out of compliance: 1
         ------------------------------------------------------------------------

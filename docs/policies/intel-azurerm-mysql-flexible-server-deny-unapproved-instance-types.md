@@ -24,27 +24,24 @@ This Sentinel policy checks that the instances are configured with the recommend
                            |_|_| |_|\__\___|_|
 
         ========================================================================
-        Name        : intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.sentinel
-        Category    : Infrastructure (IaaS)
-        Provider    : hashicorp/azurerm
-        Resource    : azurerm_mysql_flexible_server
-        Parameter   : sku_name
-        Check       : sku_name contains
+        Name        :intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.sentinel
+        Category    :Infrastructure (IaaS)
+        Provider    :hashicorp/azurerm
+        Resource    :azurerm_mysql_flexible_server
+        Parameter   :sku_name
+        Check       :sku_name contains
 
-        Compute Optimized:
-                      MO_Standard_E2ds_v5, MO_Standard_E4ds_v5
-                      MO_Standard_E8ds_v5, MO_Standard_E16ds_v5
-                      MO_Standard_E20ds_v5, MO_Standard_E32ds_v5
-                      MO_Standard_E48ds_v5, MO_Standard_E64ds_v5
+        For a list of allowed instance types see:
+        https://github.com/intel/terraform-intel-azure-mysql-flexible-server/blob/main/policies.md
 
         ========================================================================
         RESOURCE VIOLATIONS
         The configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)
         ========================================================================
-         name       : azurerm_mysql_flexible_server
-         type       : azurerm_mysql_flexible_server
-         address    : intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.azurerm_mysql_flexible_server.appservice
-         message    : NotMO_Standard_E2ds_v5 is not an allowed server type.
+         name       :azurerm_mysql_flexible_server
+         type       :azurerm_mysql_flexible_server
+         address    :intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.azurerm_mysql_flexible_server.appservice
+         message    :NotMO_Standard_E2ds_v5 is not an allowed server type.
         ------------------------------------------------------------------------
          Resources out of compliance: 1
         ------------------------------------------------------------------------
