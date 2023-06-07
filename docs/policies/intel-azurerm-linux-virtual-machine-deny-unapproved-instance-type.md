@@ -1,4 +1,4 @@
-## Ensure azurerm_linux_virtual_machine use only Intel optimized sizes (codename Ice Lake)
+# azurerm_linux_virtual_machine deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

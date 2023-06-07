@@ -1,4 +1,4 @@
-## Ensure azurerm_service_plan use only Intel optimized sku types (codename Ice Lake)
+# azurerm_service_plan deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

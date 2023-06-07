@@ -1,4 +1,4 @@
-## Ensure azurerm_mssql_server use only Intel optimized sku types (codename Ice Lake)
+# azurerm_mssql_server deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

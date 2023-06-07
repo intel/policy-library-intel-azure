@@ -1,4 +1,4 @@
-## Ensure azurerm_windows_web_app use only http2
+# azurerm_windows_web_app use only http2 (Security)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

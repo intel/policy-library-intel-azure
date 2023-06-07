@@ -1,4 +1,4 @@
-## Ensure azurerm_windows_web_app use a minimum TLS version of 1.2
+# azurerm_windows_web_app use a minimum TLS version of 1.2 (Security)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|
