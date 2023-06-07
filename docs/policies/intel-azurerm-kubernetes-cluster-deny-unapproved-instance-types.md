@@ -1,4 +1,4 @@
-## Ensure azurerm_kubernetes_cluster use only Intel optimized sizes (codename Ice Lake)
+# azurerm_kubernetes_cluster deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

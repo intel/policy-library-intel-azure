@@ -1,4 +1,4 @@
-## Ensure azurerm_windows_web_app use only https
+# azurerm_windows_web_app use only https (Security)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|
