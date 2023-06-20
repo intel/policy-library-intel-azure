@@ -1,4 +1,18 @@
 {
+  "azureadx": [
+    "Standard_E2d_v5",
+    "Standard_E4d_v5",
+    "Standard_E8d_v5",
+    "Standard_E16d_v5",
+    "Standard_L8sv3",
+    "Standard_L16sv3",
+    "Standard_L32sv3",
+    "Standard_E2sv5",
+    "Standard_E4sv5",
+    "Standard_E8sv5",
+    "Standard_E16sv5",
+    "E80idsv4"
+  ],
   "azuredbx": [
     "Standard_E4ds_v5",
     "Standard_E8ds_v5",
@@ -8,6 +22,17 @@
     "Standard_E48ds_v5",
     "Standard_E64ds_v5",
     "Standard_E96ds_v5"
+  ],
+  "azurecassandra": [
+    "Standard_D16s_v4",
+    "Standard_D32s_v4",
+    "Standard_D8s_v4",
+    "Standard_DS12_v2",
+    "Standard_DS14_v2",
+    "Standard_E8s_v4",
+    "Standard_E16s_v4",
+    "Standard_E20s_V4",
+    "Standard_E32s_v4"
   ],
   "azurek8": [
     "Standard_L8s_v3",

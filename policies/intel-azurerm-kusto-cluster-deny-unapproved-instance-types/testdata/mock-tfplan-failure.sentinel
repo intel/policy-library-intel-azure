@@ -1,0 +1,62 @@
+resource_changes = {
+	"azurerm_kusto_cluster.example": {
+		"address": "azurerm_kusto_cluster.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"allowed_fqdns":                      null,
+				"allowed_ip_ranges":                  null,
+				"auto_stop_enabled":                  true,
+				"disk_encryption_enabled":            false,
+				"double_encryption_enabled":          null,
+				"engine":                             "V2",
+				"identity":                           [],
+				"language_extensions":                null,
+				"location":                           "eastus",
+				"name":                               "kustocluster",
+				"optimized_auto_scale":               [],
+				"outbound_network_access_restricted": false,
+				"public_ip_type":                     "IPv4",
+				"public_network_access_enabled":      true,
+				"purge_enabled":                      false,
+				"resource_group_name":                "tfc",
+				"sku": [
+					{
+						"capacity": 2,
+						"name":     "Standard_D13_v2",
+					},
+				],
+				"streaming_ingestion_enabled": false,
+				"tags": {
+					"Environment": "Production",
+				},
+				"timeouts":                      null,
+				"virtual_network_configuration": [],
+				"zones": null,
+			},
+			"after_unknown": {
+				"data_ingestion_uri":   true,
+				"id":                   true,
+				"identity":             [],
+				"optimized_auto_scale": [],
+				"sku": [
+					{},
+				],
+				"tags": {},
+				"trusted_external_tenants": true,
+				"uri": true,
+				"virtual_network_configuration": [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_kusto_cluster",
+	},
+}

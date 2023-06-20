@@ -1,0 +1,53 @@
+import "tfplan/v2" as tfplan
+import "approved"
+import "policy_summary"
+
+param valid_actions default [
+	["no-op"],
+	["create"],
+	["update"],
+]
+
+doc = {
+	"allowed":   approved.azureadx,
+	"category":  "Platform (PaaS)",
+	"error":     " uses a node type that is not an allowed server type.",
+	"file_name": "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel",
+	"name":      "example",
+	"md_url":    "https://github.com/intel/terraform-intel-azure-adx/blob/main/policies.md",
+	"parameter": "sku",
+	"provider":  "hashicorp/azurerm",
+	"resource":  "azurerm_kusto_cluster",
+	"violation": "The configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)",
+}
+
+// Filter resources by type
+all_resources = filter tfplan.resource_changes as _, rc {
+	rc.type is doc.resource and
+		rc.mode is "managed" and
+		rc.change.actions in valid_actions
+}
+
+// Filter resources that violate a given condition
+violators = filter all_resources as _, r {
+	all r.change.after.sku as _, skus {
+		skus.name not in doc.allowed
+	}
+}
+
+// Build a summary report
+summaryreport = {
+	"name": doc.name,
+	"violations": map violators as _, violation {
+		{
+			"name":    violation.name,
+			"address": violation.address,
+			"type":    violation.type,
+			"message": violation.name + doc.error,
+		}
+	},
+}
+
+main = rule {
+	policy_summary.summary(summaryreport, doc)
+}

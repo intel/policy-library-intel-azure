@@ -7,6 +7,11 @@ import "module" "policy_summary" {
   source = "./modules/policysummary.sentinel"
 }
 
+policy "intel-azure-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-cosmosdb-cassandra-datacenter/intel-azurerm-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
 policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
@@ -49,6 +54,11 @@ policy "intel-azurerm-databricks-cluster-deny-unapproved-runtime-engines" {
 
 policy "intel-azurerm-databricks-cluster-enforce-spark-conf" {
   source = "./policies/intel-azurerm-databricks-cluster-enforce-spark-conf/intel-azurerm-databricks-cluster-enforce-spark-conf.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
+policy "intel-azure-kusto-cluster-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-kusto-cluster/intel-azurerm-kusto-cluster-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
 }
 
