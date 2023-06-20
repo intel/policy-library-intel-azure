@@ -1,4 +1,4 @@
-# databricks_cluster enforce spark_conf (Optimize)
+# azurerm_databricks_cluster enforce spark_conf (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

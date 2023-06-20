@@ -1,4 +1,4 @@
-# databricks_cluster deny unapproved instance types (Optimize)
+# azurerm_databricks_cluster deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

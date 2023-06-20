@@ -1,4 +1,4 @@
-# cosmosdb-cassandra-datacenter deny unapproved instance types (Optimize)
+# azurerm_cosmosdb_cassandra_datacenter deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

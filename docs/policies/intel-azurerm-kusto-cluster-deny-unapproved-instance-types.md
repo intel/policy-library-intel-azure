@@ -1,4 +1,4 @@
-# kusto-cluster deny unapproved instance types (Optimize)
+# azurerm_kusto_cluster deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|

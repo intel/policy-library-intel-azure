@@ -1,4 +1,4 @@
-# databricks_cluster deny unapproved runtime engines (Optimize)
+# azurerm_databricks_cluster deny unapproved runtime engines (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|
