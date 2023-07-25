@@ -1,0 +1,48 @@
+terraform_version = "1.3.9"
+
+resource_changes = {
+	"azurerm_mssql_managed_instance.example": {
+		"address": "azurerm_mssql_managed_instance.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"administrator_login":            "mradministrator",
+				"administrator_login_password":   "REDACTED_SENSITIVE",
+				"collation":                      "SQL_Latin1_General_CP1_CI_AS",
+				"dns_zone_partner_id":            null,
+				"identity":                       [],
+				"license_type":                   "BasePrice",
+				"location":                       "westeurope",
+				"maintenance_configuration_name": "SQL_Default",
+				"minimum_tls_version":            "1.2",
+				"name":                           "managedsqlinstance",
+				"proxy_override":                 "Default",
+				"public_data_endpoint_enabled":   false,
+				"resource_group_name":            "database-rg",
+				"sku_name":                       "GP_Gen5",
+				"storage_account_type":           "GRS",
+				"storage_size_in_gb":             32,
+				"tags":                           null,
+				"timeouts":                       null,
+				"timezone_id":                    "UTC",
+				"vcores":                         4,
+			},
+			"after_unknown": {
+				"fqdn":      true,
+				"id":        true,
+				"identity":  [],
+				"subnet_id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_mssql_managed_instance",
+	},
+}

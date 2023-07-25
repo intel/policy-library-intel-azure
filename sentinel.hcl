@@ -27,6 +27,11 @@ policy "intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types" {
   enforcement_level = "soft-mandatory"
 }
 
+policy "intel-azure-mssql-managed-instance-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-mssql-managed-instance/intel-azurerm-mssql-managed-instance-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
 policy "intel-azurerm-mssql-server-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-mssql-server-deny-unapproved-instance-types/intel-azurerm-mssql-server-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
@@ -76,3 +81,5 @@ policy "intel-azurerm-windows-web-app-enforce-minimum-tls" {
   source = "./policies/intel-azurerm-windows-web-app-enforce-minimum-tls/intel-azurerm-windows-web-app-enforce-minimum-tls.sentinel"
   enforcement_level = "soft-mandatory"
 }
+
+
