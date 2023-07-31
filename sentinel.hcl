@@ -7,6 +7,11 @@ import "module" "policy_summary" {
   source = "./modules/policysummary.sentinel"
 }
 
+policy "intel-azure-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types/intel-azurerm-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
 policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types/intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
@@ -19,6 +24,11 @@ policy "intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type" {
 
 policy "intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types/intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
+policy "intel-azure-mssql-managed-instance-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-mssql-managed-instance/intel-azurerm-mssql-managed-instance-deny-unapproved-instance-types.sentinel"
   enforcement_level = "soft-mandatory"
 }
 
@@ -52,6 +62,11 @@ policy "intel-azurerm-databricks-cluster-enforce-spark-conf" {
   enforcement_level = "soft-mandatory"
 }
 
+policy "intel-azure-kusto-cluster-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-kusto-cluster-deny-unapproved-instance-types/intel-azurerm-kusto-cluster-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
 policy "intel-azurerm-windows-web-app-enforce-http2" {
   source = "./policies/intel-azurerm-windows-web-app-enforce-http2/intel-azurerm-windows-web-app-enforce-http2.sentinel"
   enforcement_level = "soft-mandatory"
@@ -66,3 +81,5 @@ policy "intel-azurerm-windows-web-app-enforce-minimum-tls" {
   source = "./policies/intel-azurerm-windows-web-app-enforce-minimum-tls/intel-azurerm-windows-web-app-enforce-minimum-tls.sentinel"
   enforcement_level = "soft-mandatory"
 }
+
+

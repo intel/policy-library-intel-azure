@@ -1,0 +1,36 @@
+resource_changes = {
+	"azurerm_cosmosdb_cassandra_datacenter.example": {
+		"address": "azurerm_cosmosdb_cassandra_datacenter.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"availability_zones_enabled":      false,
+				"backup_storage_customer_key_uri": null,
+				"base64_encoded_yaml_fragment":    null,
+				"disk_count":                      4,
+				"disk_sku":                        "P30",
+				"location":                        "australiaeast",
+				"managed_disk_customer_key_uri":   null,
+				"name":       "example-datacenter",
+				"node_count": 3,
+				"sku_name":   "NOTStandard_D16s_v4",
+				"timeouts":   null,
+			},
+			"after_unknown": {
+				"cassandra_cluster_id":           true,
+				"delegated_management_subnet_id": true,
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/azurerm",
+		"type":           "azurerm_cosmosdb_cassandra_datacenter",
+	},
+}

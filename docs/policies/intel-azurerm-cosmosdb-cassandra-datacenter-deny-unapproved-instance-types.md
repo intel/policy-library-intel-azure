@@ -1,12 +1,12 @@
-# azurerm_databricks_cluster deny unapproved instance types (Optimize)
+# azurerm_cosmosdb_cassandra_datacenter deny unapproved instance types (Optimize)
 
 | Provider            | Category                 |
 |---------------------|--------------------------|
-| databricks          | Platform (PaaS)          |
+| azurerm                 | Infrastructure (IaaS)    |
 
 ## Description
 
-Server performance is one of the most important components for enterprise applications experience. Deploying Databricks clusters on Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake) provides a seamless performance foundation.
+Server performance is one of the most important components for enterprise applications experience. Deploying the cosmosdb-cassandra-datacenter on Intel Xeon 3rd Generation Scalable processors (code-named Ice Lake) provides a seamless performance foundation.
 
 This Sentinel policy checks that the instances are configured with the recommended instance types to deliver optimal cost and performance for your business criticial servers.
 
@@ -24,28 +24,29 @@ This Sentinel policy checks that the instances are configured with the recommend
                            |_|_| |_|\__\___|_|
 
         ========================================================================
-        Name        :intel-azurerm-databricks-cluster-deny-unapproved-instance-types.sentinel
-        Category    :Platform (PaaS)
-        Provider    :databricks/databricks
-        Resource    :databricks_cluster
-        Parameter   :node_type_id
-        Check       :node_type_id contains
-
-        For a list of allowed instance types see:
-        https://github.com/intel/terraform-intel-azure-databricks-workspace/blob/main/policies.md
+        Name        : intel-azurerm-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types.sentinel
+        Category    : Infrastructure (IaaS)
+        Provider    : hashicorp/azurerm
+        Resource    : azurerm_cosmosdb_cassandra_datacenter
+        Parameter   : sku_name
+        ========================================================================
+        For a list of allowed parameter options see:
+        https://github.com/intel/terraform-intel-azure-cassandra/blob/main/policies.md
 
         ========================================================================
         RESOURCE VIOLATIONS
         The configured server type should use an Intel Xeon 3rd Generation Scalable processor (code-named Ice Lake)
         ========================================================================
-         name       :dbx_cluster
-         type       :databricks_cluster
-         address    :module.databricks_cluster.databricks_cluster.dbx_cluster
-         message    :NotStandard_E8ds_v5 is not an allowed server type.
+         name       : example
+         type       : azurerm_cosmosdb_cassandra_datacenter
+         address    : azurerm_cosmosdb_cassandra_datacenter.example
+         message    : example uses an unapproved instance type
         ------------------------------------------------------------------------
          Resources out of compliance: 1
         ------------------------------------------------------------------------
-
-        Value:
-          Fail
 ```
+
+
+
+
+
