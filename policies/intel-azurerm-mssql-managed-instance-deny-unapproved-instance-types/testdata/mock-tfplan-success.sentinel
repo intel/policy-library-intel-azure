@@ -21,7 +21,7 @@ resource_changes = {
 				"proxy_override":                 "Default",
 				"public_data_endpoint_enabled":   false,
 				"resource_group_name":            "database-rg",
-				"sku_name":                       "Gen5_v4",
+				"sku_name":                       "GP_G8IM_v4",
 				"storage_account_type":           "GRS",
 				"storage_size_in_gb":             32,
 				"tags":                           null,
