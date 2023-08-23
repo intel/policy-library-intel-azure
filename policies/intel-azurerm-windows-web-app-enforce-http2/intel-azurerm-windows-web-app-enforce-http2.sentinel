@@ -29,7 +29,7 @@ all_resources = filter tfplan.resource_changes as _, rc {
 
 // Filter resources that violate a given condition
 violators = filter all_resources as _, r {
-	all r.change.after.site_config as _, site_config {
+	all r.change.after.site_config else [] as _, site_config {
 		site_config.http2_enabled is false
 	}
 }
