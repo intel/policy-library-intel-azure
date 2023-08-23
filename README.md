@@ -8,7 +8,7 @@
 
 ## Sentinel Policies for Azure Modules
 
-This library, provides prescriptive Sentinel policies that optimize Terraform deployed resources on Microsoft Azure. The policies that are contained in this library are based on the [Open-Source Database Tuning Guide on 3rd Generation Intel® Xeon® Scalable Processors Based Platform](https://www.intel.com/content/dam/develop/external/us/en/documents/Open-Source-Database-Tuning-Guide-on-3rd-Generation-Intel-Xeon-Scalable-Processors.pdf). Terraform Cloud and Enterprise users can use the policies in this library to enable intelligent developer decisions when deploying cloud infrastructure by choosing the best price for performance instance types for their cloud resources. 
+This library, provides prescriptive Sentinel policies that optimize Terraform deployed resources on Microsoft Azure. The policies that are contained in this library are based on the The policies that are contained in this library are based on the latest performance and benchmarking tests that can be found at https://www.intel.com/content/www/us/en/developer/topic-technology/cloud/cloud-performance.html?f:@stm_10381_en=%5BMicrosoft%3BMicrosoft%20Azure%5D. Terraform Cloud and Enterprise users can use the policies in this library to enable intelligent developer decisions when deploying cloud infrastructure by choosing the best price for performance instance types for their cloud resources. 
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ See https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/mana
 
 1. Log in to github and browse to the policy library repository: https://github.com/intel/policy-library-intel-azure
 2. Fork the repository: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-3. Log into TFE or TFCB and add the newly forked repository as a Version Controlled policy set: https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/manage-policy-sets#create-policy-sets
+3. Log into Terraform Enterprise or Terraform Cloud for Business and add the newly forked repository as a Version Controlled policy set: https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement/manage-policy-sets#create-policy-sets
 4. Apply the policy set to your workspaces or globally as desired
 5. Update the `sentinel.hcl` to **soft-mandatory** or **hard-mandatory** policies to harden governance and force rather than inform developers
 6. When new versions are released simply sync your forked repository to be updated to the latest recommended instance list: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork (Note this will set policies back to **advisory**)
