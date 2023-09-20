@@ -12,7 +12,7 @@ doc = {
 	"allowed":   approved.azurelinuxvm,
 	"category":  "Infrastructure (IaaS)",
 	"error":     " is not an allowed server type.",
-	"file_name": "intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.sentinel",
+	"file_name": "intel-azurerm-linux-virtual-machine-deny-unapproved-instance-types.sentinel",
 	"name":      "linuxvm01",
 	"md_url":    "https://github.com/intel/terraform-intel-azure-linux-vm/blob/main/policies.md",
 	"parameter": "virtual_machine_size",

@@ -9,7 +9,7 @@ import "module" "policy_summary" {
 
 policy "intel-azure-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types/intel-azurerm-cosmosdb-cassandra-datacenter-deny-unapproved-instance-types.sentinel"
-  enforcement_level = "soft-mandatory"
+  enforcement_level = "advisory"
 }
 
 policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types" {
@@ -17,8 +17,8 @@ policy "intel-azurerm-kubernetes-cluster-deny-unapproved-instance-types" {
   enforcement_level = "advisory"
 }
 
-policy "intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type" {
-  source = "./policies/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-type.sentinel"
+policy "intel-azurerm-linux-virtual-machine-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-types/intel-azurerm-linux-virtual-machine-deny-unapproved-instance-types.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -28,8 +28,8 @@ policy "intel-azurerm-mysql-flexible-server-deny-unapproved-instance-types" {
 }
 
 policy "intel-azure-mssql-managed-instance-deny-unapproved-instance-types" {
-  source = "./policies/intel-azurerm-mssql-managed-instance/intel-azurerm-mssql-managed-instance-deny-unapproved-instance-types.sentinel"
-  enforcement_level = "soft-mandatory"
+  source = "./policies/intel-azurerm-mssql-managed-instance-deny-unapproved-instance-types/intel-azurerm-mssql-managed-instance-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "advisory"
 }
 
 policy "intel-azurerm-mssql-server-deny-unapproved-instance-types" {
@@ -64,7 +64,7 @@ policy "intel-azurerm-databricks-cluster-enforce-spark-conf" {
 
 policy "intel-azure-kusto-cluster-deny-unapproved-instance-types" {
   source = "./policies/intel-azurerm-kusto-cluster-deny-unapproved-instance-types/intel-azurerm-kusto-cluster-deny-unapproved-instance-types.sentinel"
-  enforcement_level = "soft-mandatory"
+  enforcement_level = "advisory"
 }
 
 policy "intel-azurerm-windows-web-app-enforce-http2" {
