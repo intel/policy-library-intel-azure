@@ -87,6 +87,11 @@ policy "intel-azure-kusto-cluster-deny-unapproved-instance-types" {
   enforcement_level = "advisory"
 }
 
+policy "intel-azure-windows-virtual-machine-deny-unapproved-instance-types" {
+  source = "./policies/intel-azurerm-windows-virtual-machine/intel-azurerm-windows-virtual-machine-deny-unapproved-instance-types.sentinel"
+  enforcement_level = "soft-mandatory"
+}
+
 policy "intel-azurerm-windows-web-app-enforce-http2" {
   source = "./policies/intel-azurerm-windows-web-app-enforce-http2/intel-azurerm-windows-web-app-enforce-http2.sentinel"
   enforcement_level = "advisory"
@@ -101,3 +106,4 @@ policy "intel-azurerm-windows-web-app-enforce-minimum-tls" {
   source = "./policies/intel-azurerm-windows-web-app-enforce-minimum-tls/intel-azurerm-windows-web-app-enforce-minimum-tls.sentinel"
   enforcement_level = "advisory"
 }
+
