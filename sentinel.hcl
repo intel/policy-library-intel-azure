@@ -106,4 +106,3 @@ policy "intel-azurerm-windows-web-app-enforce-minimum-tls" {
   source = "./policies/intel-azurerm-windows-web-app-enforce-minimum-tls/intel-azurerm-windows-web-app-enforce-minimum-tls.sentinel"
   enforcement_level = "advisory"
 }
-

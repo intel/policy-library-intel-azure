@@ -14,7 +14,7 @@ doc = {
 	"error":     " uses an unallowed server type",
 	"file_name": "intel-azurerm-windows-virtual-machine-deny-unapproved-instance-types.sentinel",
 	"name":      "intel-azurerm-windows-virtual-machine-deny-unapproved-instance-types",
-	"md_url":    "REPLACEURL",
+	"md_url":    "https://github.com/intel/terraform-intel-azure-windows-vm/blob/main/policies.md",
 	"parameter": "size",
 	"provider":  "hashicorp/azurerm",
 	"resource":  "azurerm_windows_virtual_machine",
