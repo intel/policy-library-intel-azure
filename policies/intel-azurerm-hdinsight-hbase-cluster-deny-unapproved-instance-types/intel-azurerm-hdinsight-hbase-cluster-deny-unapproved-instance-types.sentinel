@@ -13,7 +13,7 @@ doc = {
 	"category":  "Infrastructure (IaaS)",
 	"error":     " uses an unallowed server type",
 	"file_name": "intel-azurerm-hdinsight-hbase-cluster-deny-unapproved-instance-types.sentinel",
-	"name":      "intel-azurerm-hdinsight-hbase-cluster-deny-unapproved-instance-types",
+	"name":      "hbase-cluster",
 	"md_url":    "https://github.com/intel/policy-library-intel-azure/blob/main/policies.md",
 	"parameter": "vm_size",
 	"provider":  "hashicorp/azurerm",

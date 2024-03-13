@@ -13,7 +13,7 @@ doc = {
 	"category":  "Infrastructure (IaaS)",
 	"error":     " uses an instance type that is not approved.",
 	"file_name": "intel-azurerm-hdinsight-hadoop-cluster-deny-unapproved-instance-types.sentinel",
-	"name":      "intel-azurerm-hdinsight-hadoop-cluster-deny-unapproved-instance-types",
+	"name":      "hadoop",
 	"md_url":    "https://github.com/intel/policy-library-intel-azure/blob/main/policies.md",
 	"parameter": "vm_size",
 	"provider":  "hashicorp/azurerm",
