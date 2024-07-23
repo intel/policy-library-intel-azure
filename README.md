@@ -2,6 +2,9 @@
   <img src="https://github.com/intel/policy-library-intel-azure/blob/main/images/logo-classicblue-800px.png?raw=true" alt="Intel Logo" width="250"/>
 </p>
 
+# Deprecation Notice
+A new version of this library is now available at [github.com/intel/policy-library-intel](https://github.com/intel/policy-library-intel). The new library includes enhanced features to keep developers informed of optimal instance selection and provides notifications when Intel releases new recommended instance types. We encourage all users to transition to the new library to take advantage of these improvements.
+
 # Azure Sentinel Policies - Intel Optimized Cloud Modules
 
 © Copyright 2022, Intel Corporation
